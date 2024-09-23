@@ -1,8 +1,7 @@
 import { SignOutButton, useUser } from "@clerk/nextjs"
 import { Avatar, AvatarImage } from "../ui/avatar"
-import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger } from "../ui/dropdown-menu"
+import { DropdownMenu, DropdownMenuContent, DropdownMenuTrigger, DropdownMenuItem, DropdownMenuSeparator } from "../ui/dropdown-menu"
 import { ChevronsLeftRight } from "lucide-react"
-import { DropdownMenuItem, DropdownMenuSeparator } from "@radix-ui/react-dropdown-menu"
 
 export default function UserItem() {
     const { user } = useUser()
@@ -13,7 +12,7 @@ export default function UserItem() {
                     role="button"
                     className="flex items-center text-sm p-3 w-full hover:bg-primary/5"
                 >
-                    <div className="gap-x-2 flex items-center max-w-[150px]">
+                    <div className="gap-x-2 flex items-center max-w-[180px]">
                         <Avatar className="h-5 w-5">
                             <AvatarImage src={user?.imageUrl} />
                         </Avatar>
