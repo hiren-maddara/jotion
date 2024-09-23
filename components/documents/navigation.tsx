@@ -4,6 +4,8 @@ import { usePathname } from "next/navigation";
 import React, { useEffect, useRef, useState } from "react";
 import { useMediaQuery } from "usehooks-ts";
 import UserItem from "./user-item";
+import { useQuery } from "convex/react";
+import { api } from "@/convex/_generated/api";
 
 export default function Navigation() {
     const isMobile = useMediaQuery("max-width: 768px")
@@ -15,6 +17,9 @@ export default function Navigation() {
 
     const [isResetting, setIsResetting] = useState(false)
     const [isCollapsed, setIsCollapsed] = useState(isMobile)
+
+    const documents = useQuery(api.documents.get)
+
 
     useEffect(() => {
         if (isMobile) {
@@ -117,7 +122,11 @@ export default function Navigation() {
                 </div>
 
                 <div className="mt-4">
-                    <p>Documents</p>
+                    {documents?.map(document => (
+                        <p key={document._id}>
+                            {document.title}
+                        </p>
+                    ))}
                 </div>
 
                 <div
